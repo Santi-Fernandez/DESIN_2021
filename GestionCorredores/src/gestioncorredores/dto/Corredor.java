@@ -18,8 +18,7 @@ public class Corredor {
     
     String nombre,dni,direccion,telefono;
     Date fechaNacimiento;
-    private SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
-    Scanner santi = new Scanner (System.in);
+    
 
     public Corredor(String nombre, String dni, String direccion, String telefono, Date fechaNacimiento) {
         this.nombre = nombre;
@@ -76,29 +75,17 @@ public class Corredor {
         this.fechaNacimiento = fechaNacimiento;
     }
     
-    public void crearCorredor(){
+    
+    
+    public void imprimirCorredor() {
         
-        try {
-            System.out.println("Introduce NOMBRE corredor: ");
-            nombre = santi.nextLine();
-            System.out.println("Introduce DNI corredor ");
-            dni = santi.nextLine();
-            System.out.println("Introduce DIRECCION corredor");
-            direccion=santi.nextLine();
-            System.out.println("Introduce TELEFONO corredor");
-            telefono=santi.nextLine();
-            System.out.println("Introduce FEHCA NACIMIENTO corredor");
-            fechaNacimiento=sdf.parse(santi.nextLine());
-        }
+        System.out.println("--== DATOS CORREDOR ==--");
+        System.out.println("NOMBRE: " +nombre);
+        System.out.println("DNI: " +dni);
+        System.out.println("DIRECCION: " +direccion);
+        System.out.println("TELEFONO: " +telefono);
+        System.out.println("FECHA NACIMIENTO: " +fechaNacimiento);
         
-        catch (ParseException e) {
-            
-            System.out.println("Error con la fecha");
-            
-        }       
-    }
-    
-    
-    
+    }   
     
 }

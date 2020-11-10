@@ -45,10 +45,19 @@ public class LogicaPrograma {
                posicion = i;      
         }
         
-        corredor.crearCorredor();
+        //corredor.crearCorredor();
         
         listaCorredores.set(posicion, corredor);
         
+        
+    }
+    
+    public void imprimirLista () {
+        
+        
+        for (int i = 0; i <= listaCorredores.size();i++){
+            listaCorredores.get(i).imprimirCorredor();
+        }
         
     }
     
