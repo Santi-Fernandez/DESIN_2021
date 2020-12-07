@@ -9,6 +9,11 @@ import gestioncorredores.dto.Corredor;
 import gestioncorredores.gui.PantallaPrincipal;
 import gestioncorredores.logica.LogicaCorredor;
 import java.util.Date;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
+import org.netbeans.validation.api.builtin.stringvalidation.DniValidar;
+import org.netbeans.validation.api.builtin.stringvalidation.StringValidators;
+import org.netbeans.validation.api.ui.ValidationGroup;
 
 /**
  *
@@ -22,9 +27,35 @@ public class CrearCorredor extends javax.swing.JDialog {
      * Creates new form CrearCorredor
      */
     public CrearCorredor(java.awt.Frame parent, boolean modal) {
-        super(parent, modal);
+        super(parent, modal);      
         pantallaPrincipal = (PantallaPrincipal) parent;
         initComponents();
+         //Por defecto el boton crear está deshabilitado
+         jButtonCrear.setEnabled(false);
+        
+        //Validacion formulario
+        ValidationGroup group = validationPanel.getValidationGroup();
+        group.add(jTextFieldNombre, StringValidators.REQUIRE_NON_EMPTY_STRING);
+        group.add(jTextFieldDni, StringValidators.REQUIRE_NON_EMPTY_STRING, new DniValidar());
+        group.add(jTextFieldDireccion, StringValidators.REQUIRE_NON_EMPTY_STRING);
+        group.add(jTextFieldTelefono, StringValidators.REQUIRE_NON_EMPTY_STRING);
+        
+        if(validationPanel.getProblem()== null)
+                    jButtonCrear.setEnabled(true);
+        
+        //Activacion del boton crear cuando no hya fallos de validacion
+        validationPanel.addChangeListener(new ChangeListener() {
+            @Override
+            public void stateChanged(ChangeEvent ce) {
+                if(validationPanel.getProblem()== null)
+                    jButtonCrear.setEnabled(true);
+                else
+                    jButtonCrear.setEnabled(false);
+            }
+        });
+        
+        
+        
     }
 
     /**
@@ -47,6 +78,7 @@ public class CrearCorredor extends javax.swing.JDialog {
         jSpinnerFechaNacimiento = new javax.swing.JSpinner();
         jButtonCrear = new javax.swing.JButton();
         jButtonCancelar = new javax.swing.JButton();
+        validationPanel = new org.netbeans.validation.api.ui.swing.ValidationPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -59,6 +91,14 @@ public class CrearCorredor extends javax.swing.JDialog {
         jLabel4.setText("Teléfono");
 
         jLabel5.setText("Fecha Nacimieto");
+
+        jTextFieldNombre.setName("Nombre"); // NOI18N
+
+        jTextFieldDni.setName("DNI"); // NOI18N
+
+        jTextFieldDireccion.setName("Direccion"); // NOI18N
+
+        jTextFieldTelefono.setName("Telefono"); // NOI18N
 
         jSpinnerFechaNacimiento.setModel(new javax.swing.SpinnerDateModel());
 
@@ -80,28 +120,31 @@ public class CrearCorredor extends javax.swing.JDialog {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(42, 42, 42)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel3)
-                    .addComponent(jLabel4)
-                    .addComponent(jLabel5))
-                .addGap(52, 52, 52)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jTextFieldNombre)
-                    .addComponent(jTextFieldDni)
-                    .addComponent(jTextFieldDireccion)
-                    .addComponent(jTextFieldTelefono)
-                    .addComponent(jSpinnerFechaNacimiento, javax.swing.GroupLayout.DEFAULT_SIZE, 263, Short.MAX_VALUE))
-                .addContainerGap(92, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jButtonCancelar)
                 .addGap(18, 18, 18)
                 .addComponent(jButtonCrear, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(43, 43, 43))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(42, 42, 42)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(validationPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel1)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel4)
+                            .addComponent(jLabel5))
+                        .addGap(52, 52, 52)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jTextFieldNombre)
+                            .addComponent(jTextFieldDni)
+                            .addComponent(jTextFieldDireccion)
+                            .addComponent(jTextFieldTelefono)
+                            .addComponent(jSpinnerFechaNacimiento, javax.swing.GroupLayout.DEFAULT_SIZE, 263, Short.MAX_VALUE))))
+                .addContainerGap(92, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -126,7 +169,9 @@ public class CrearCorredor extends javax.swing.JDialog {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
                     .addComponent(jSpinnerFechaNacimiento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 218, Short.MAX_VALUE)
+                .addGap(34, 34, 34)
+                .addComponent(validationPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 153, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonCancelar)
                     .addComponent(jButtonCrear))
@@ -187,5 +232,6 @@ public class CrearCorredor extends javax.swing.JDialog {
     private javax.swing.JTextField jTextFieldDni;
     private javax.swing.JTextField jTextFieldNombre;
     private javax.swing.JTextField jTextFieldTelefono;
+    private org.netbeans.validation.api.ui.swing.ValidationPanel validationPanel;
     // End of variables declaration//GEN-END:variables
 }

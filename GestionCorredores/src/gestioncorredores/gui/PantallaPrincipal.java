@@ -6,6 +6,7 @@
 package gestioncorredores.gui;
 
 import gestioncorredores.gui.corredores.CrearCorredor;
+import java.util.Locale;
 
 /**
  *
@@ -101,6 +102,7 @@ public class PantallaPrincipal extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
+                Locale.setDefault(new Locale("es","ES"));
                 new PantallaPrincipal().setVisible(true);
             }
         });
