@@ -6,6 +6,7 @@
 package gestioncorredores.gui;
 
 import gestioncorredores.gui.corredores.CrearCorredor;
+import gestioncorredores.gui.corredores.ListaCorredores;
 import java.util.Locale;
 
 /**
@@ -13,6 +14,8 @@ import java.util.Locale;
  * @author mad_d
  */
 public class PantallaPrincipal extends javax.swing.JFrame {
+    
+   
 
     /**
      * Creates new form PantallaPrinciipal
@@ -32,6 +35,7 @@ public class PantallaPrincipal extends javax.swing.JFrame {
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenuItemCrearCorredor = new javax.swing.JMenuItem();
+        jMenuItemListaCorredores = new javax.swing.JMenuItem();
 
         jMenu2.setText("jMenu2");
 
@@ -46,6 +50,14 @@ public class PantallaPrincipal extends javax.swing.JFrame {
             }
         });
         jMenu1.add(jMenuItemCrearCorredor);
+
+        jMenuItemListaCorredores.setText("Lista Corredores ...");
+        jMenuItemListaCorredores.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemListaCorredoresActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuItemListaCorredores);
 
         jMenuBar1.add(jMenu1);
 
@@ -67,9 +79,18 @@ public class PantallaPrincipal extends javax.swing.JFrame {
 
     private void jMenuItemCrearCorredorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemCrearCorredorActionPerformed
         CrearCorredor crearCorredor = new CrearCorredor(this, true);
-        crearCorredor.setVisible(rootPaneCheckingEnabled);
+        crearCorredor.setVisible(true);
+        
+        
                 
     }//GEN-LAST:event_jMenuItemCrearCorredorActionPerformed
+
+    private void jMenuItemListaCorredoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemListaCorredoresActionPerformed
+        ListaCorredores listaCorredores = new ListaCorredores(this, true);
+        listaCorredores.setVisible(true);
+        listaCorredores.refrescarTabla();
+        
+    }//GEN-LAST:event_jMenuItemListaCorredoresActionPerformed
 
     /**
      * @param args the command line arguments
@@ -114,5 +135,6 @@ public class PantallaPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItemCrearCorredor;
+    private javax.swing.JMenuItem jMenuItemListaCorredores;
     // End of variables declaration//GEN-END:variables
 }

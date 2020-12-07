@@ -73,9 +73,7 @@ public class Corredor {
 
     public void setFechaNacimiento(Date fechaNacimiento) {
         this.fechaNacimiento = fechaNacimiento;
-    }
-    
-    
+    }    
     
     public void imprimirCorredor() {
         
@@ -86,6 +84,19 @@ public class Corredor {
         System.out.println("TELEFONO: " +telefono);
         System.out.println("FECHA NACIMIENTO: " +fechaNacimiento);
         
-    }   
+    }
+    
+    public String[] arrayDatosCorredor() {
+    
+        String[] datosCorredor = new String[5];
+        datosCorredor[0]=nombre;
+        datosCorredor[1]=dni;
+        datosCorredor[2]=direccion;
+        datosCorredor[3]=telefono;
+        datosCorredor[4]=fechaNacimiento.toString();
+        
+        return datosCorredor;
+        
+    }
     
 }
