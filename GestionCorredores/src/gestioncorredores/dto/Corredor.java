@@ -18,6 +18,7 @@ public class Corredor {
     
     String nombre,dni,direccion,telefono;
     Date fechaNacimiento;
+    SimpleDateFormat formatoFecha = new SimpleDateFormat("dd-MM-yyyy");
     
 
     public Corredor(String nombre, String dni, String direccion, String telefono, Date fechaNacimiento) {
@@ -93,7 +94,7 @@ public class Corredor {
         datosCorredor[1]=dni;
         datosCorredor[2]=direccion;
         datosCorredor[3]=telefono;
-        datosCorredor[4]=fechaNacimiento.toString();
+        datosCorredor[4]=formatoFecha.format(fechaNacimiento);
         
         return datosCorredor;
         
