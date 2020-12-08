@@ -7,6 +7,7 @@ package gestioncorredores.gui.corredores;
 
 import gestioncorredores.gui.corredores.tablemodels.ModificarCorredoresTablemodel;
 import gestioncorredores.logica.LogicaCorredor;
+import javax.swing.JOptionPane;
 import javax.swing.table.TableRowSorter;
 
 /**
@@ -26,19 +27,15 @@ public class ModificarBorrarCorredores extends javax.swing.JDialog {
         rellenarTablaCorredores();
 
     }
-    
-    // Se aplica ModificarCorredoresTablemodel y se permite ordena la tabla
 
+    // Se aplica ModificarCorredoresTablemodel y se permite ordena la tabla
     public void rellenarTablaCorredores() {
 
         ModificarCorredoresTablemodel tmc = new ModificarCorredoresTablemodel(logicaCorredor.getListaCorredores());
         jTableModBorCorredores.setModel(tmc);
-        
+
         TableRowSorter<ModificarCorredoresTablemodel> sorter = new TableRowSorter<>(tmc);
         jTableModBorCorredores.setRowSorter(sorter);
-        
-        
-        
 
     }
 
@@ -55,6 +52,7 @@ public class ModificarBorrarCorredores extends javax.swing.JDialog {
         jButtonVolver = new javax.swing.JButton();
         jButtonSeleccionar = new javax.swing.JButton();
         jLabelSeleccion = new javax.swing.JLabel();
+        jButtonEliminar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -87,6 +85,13 @@ public class ModificarBorrarCorredores extends javax.swing.JDialog {
 
         jLabelSeleccion.setText(org.openide.util.NbBundle.getMessage(ModificarBorrarCorredores.class, "ModificarBorrarCorredores.jLabelSeleccion.text")); // NOI18N
 
+        jButtonEliminar.setText(org.openide.util.NbBundle.getMessage(ModificarBorrarCorredores.class, "ModificarBorrarCorredores.jButtonEliminar.text")); // NOI18N
+        jButtonEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonEliminarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -101,6 +106,8 @@ public class ModificarBorrarCorredores extends javax.swing.JDialog {
                         .addComponent(jButtonSeleccionar)
                         .addGap(18, 18, 18)
                         .addComponent(jLabelSeleccion, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButtonEliminar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jButtonVolver)
                         .addGap(16, 16, 16))))
@@ -114,7 +121,8 @@ public class ModificarBorrarCorredores extends javax.swing.JDialog {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonVolver)
                     .addComponent(jButtonSeleccionar)
-                    .addComponent(jLabelSeleccion, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabelSeleccion, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButtonEliminar))
                 .addGap(17, 17, 17))
         );
 
@@ -144,8 +152,19 @@ public class ModificarBorrarCorredores extends javax.swing.JDialog {
 
     private void jButtonSeleccionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSeleccionarActionPerformed
         int seleccionado = jTableModBorCorredores.convertRowIndexToModel(jTableModBorCorredores.getSelectedRow());
-        jLabelSeleccion.setText(logicaCorredor.getListaCorredores().get(seleccionado).getNombre());
+        jLabelSeleccion.setText(logicaCorredor.getListaCorredores().get(seleccionado).getDni());
     }//GEN-LAST:event_jButtonSeleccionarActionPerformed
+
+    private void jButtonEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEliminarActionPerformed
+        int seleccionado = jTableModBorCorredores.convertRowIndexToModel(jTableModBorCorredores.getSelectedRow());
+        int resultado = JOptionPane.showConfirmDialog(this, "¿Eliminar corredor?", "Eliminar", JOptionPane.YES_NO_OPTION);
+        if (resultado == JOptionPane.YES_OPTION) {
+            logicaCorredor.getListaCorredores().remove(seleccionado);
+        }
+
+        rellenarTablaCorredores();
+
+    }//GEN-LAST:event_jButtonEliminarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -190,6 +209,7 @@ public class ModificarBorrarCorredores extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButtonEliminar;
     private javax.swing.JButton jButtonSeleccionar;
     private javax.swing.JButton jButtonVolver;
     private javax.swing.JLabel jLabelSeleccion;
