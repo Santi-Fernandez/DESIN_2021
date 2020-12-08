@@ -48,6 +48,13 @@ public class PantallaPrincipal extends javax.swing.JFrame {
         Date date3 = new GregorianCalendar(1995, Calendar.JANUARY, 2).getTime();
         Corredor corredor3 = new Corredor("Javier Fernandez", "71648922Q", "C/ Tenderina 114", "664892466", date3 );
         anadirCorredor(corredor3);
+        Date date4 = new GregorianCalendar(2000, Calendar.DECEMBER, 9).getTime();
+        Corredor corredor4 = new Corredor("Laura Abadia", "71569924X", "C/ Independencia 7", "696881425", date4 );
+        anadirCorredor(corredor4);
+        Date date5 = new GregorianCalendar(1976, Calendar.NOVEMBER, 14).getTime();
+        Corredor corredor5 = new Corredor("Maite Alonso", "71884123D", "C/ Rosal 12 ", "687441126", date5 );
+        anadirCorredor(corredor5);
+        
         
 
     }

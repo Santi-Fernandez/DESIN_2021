@@ -7,13 +7,14 @@ package gestioncorredores.gui.corredores;
 
 import gestioncorredores.gui.corredores.tablemodels.ModificarCorredoresTablemodel;
 import gestioncorredores.logica.LogicaCorredor;
+import javax.swing.table.TableRowSorter;
 
 /**
  *
  * @author mad_d
  */
 public class ModificarBorrarCorredores extends javax.swing.JDialog {
-    
+
     private LogicaCorredor logicaCorredor = new LogicaCorredor();
 
     /**
@@ -22,7 +23,23 @@ public class ModificarBorrarCorredores extends javax.swing.JDialog {
     public ModificarBorrarCorredores(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-        jTableModBorCorredores.setModel(new ModificarCorredoresTablemodel(logicaCorredor.getListaCorredores()));
+        rellenarTablaCorredores();
+
+    }
+    
+    // Se aplica ModificarCorredoresTablemodel y se permite ordena la tabla
+
+    public void rellenarTablaCorredores() {
+
+        ModificarCorredoresTablemodel tmc = new ModificarCorredoresTablemodel(logicaCorredor.getListaCorredores());
+        jTableModBorCorredores.setModel(tmc);
+        
+        TableRowSorter<ModificarCorredoresTablemodel> sorter = new TableRowSorter<>(tmc);
+        jTableModBorCorredores.setRowSorter(sorter);
+        
+        
+        
+
     }
 
     /**
@@ -36,6 +53,8 @@ public class ModificarBorrarCorredores extends javax.swing.JDialog {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTableModBorCorredores = new javax.swing.JTable();
         jButtonVolver = new javax.swing.JButton();
+        jButtonSeleccionar = new javax.swing.JButton();
+        jLabelSeleccion = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -59,18 +78,32 @@ public class ModificarBorrarCorredores extends javax.swing.JDialog {
             }
         });
 
+        jButtonSeleccionar.setText(org.openide.util.NbBundle.getMessage(ModificarBorrarCorredores.class, "ModificarBorrarCorredores.jButtonSeleccionar.text")); // NOI18N
+        jButtonSeleccionar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonSeleccionarActionPerformed(evt);
+            }
+        });
+
+        jLabelSeleccion.setText(org.openide.util.NbBundle.getMessage(ModificarBorrarCorredores.class, "ModificarBorrarCorredores.jLabelSeleccion.text")); // NOI18N
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 869, Short.MAX_VALUE)
-                .addContainerGap())
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButtonVolver)
-                .addGap(16, 16, 16))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 869, Short.MAX_VALUE)
+                        .addContainerGap())
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(jButtonSeleccionar)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabelSeleccion, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButtonVolver)
+                        .addGap(16, 16, 16))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -78,7 +111,10 @@ public class ModificarBorrarCorredores extends javax.swing.JDialog {
                 .addContainerGap()
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 310, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 236, Short.MAX_VALUE)
-                .addComponent(jButtonVolver)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButtonVolver)
+                    .addComponent(jButtonSeleccionar)
+                    .addComponent(jLabelSeleccion, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(17, 17, 17))
         );
 
@@ -105,6 +141,11 @@ public class ModificarBorrarCorredores extends javax.swing.JDialog {
     private void jButtonVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonVolverActionPerformed
         setVisible(false);
     }//GEN-LAST:event_jButtonVolverActionPerformed
+
+    private void jButtonSeleccionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSeleccionarActionPerformed
+        int seleccionado = jTableModBorCorredores.convertRowIndexToModel(jTableModBorCorredores.getSelectedRow());
+        jLabelSeleccion.setText(logicaCorredor.getListaCorredores().get(seleccionado).getNombre());
+    }//GEN-LAST:event_jButtonSeleccionarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -149,7 +190,9 @@ public class ModificarBorrarCorredores extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButtonSeleccionar;
     private javax.swing.JButton jButtonVolver;
+    private javax.swing.JLabel jLabelSeleccion;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTableModBorCorredores;
