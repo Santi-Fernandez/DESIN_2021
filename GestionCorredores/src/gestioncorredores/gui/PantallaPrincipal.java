@@ -7,6 +7,7 @@ package gestioncorredores.gui;
 
 import gestioncorredores.gui.corredores.CrearCorredor;
 import gestioncorredores.gui.corredores.ListaCorredores;
+import gestioncorredores.gui.corredores.ModificarBorrarCorredores;
 import java.util.Locale;
 
 /**
@@ -36,6 +37,7 @@ public class PantallaPrincipal extends javax.swing.JFrame {
         jMenu1 = new javax.swing.JMenu();
         jMenuItemCrearCorredor = new javax.swing.JMenuItem();
         jMenuItemListaCorredores = new javax.swing.JMenuItem();
+        jMenuItemModificarCorredor = new javax.swing.JMenuItem();
 
         jMenu2.setText("jMenu2");
 
@@ -58,6 +60,14 @@ public class PantallaPrincipal extends javax.swing.JFrame {
             }
         });
         jMenu1.add(jMenuItemListaCorredores);
+
+        jMenuItemModificarCorredor.setText("Modificar Corredor ...");
+        jMenuItemModificarCorredor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemModificarCorredorActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuItemModificarCorredor);
 
         jMenuBar1.add(jMenu1);
 
@@ -91,6 +101,11 @@ public class PantallaPrincipal extends javax.swing.JFrame {
         listaCorredores.refrescarTabla();
         
     }//GEN-LAST:event_jMenuItemListaCorredoresActionPerformed
+
+    private void jMenuItemModificarCorredorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemModificarCorredorActionPerformed
+        ModificarBorrarCorredores modificarBorrarCorredores = new ModificarBorrarCorredores(this, true);
+        modificarBorrarCorredores.setVisible(true);
+    }//GEN-LAST:event_jMenuItemModificarCorredorActionPerformed
 
     /**
      * @param args the command line arguments
@@ -136,5 +151,6 @@ public class PantallaPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItemCrearCorredor;
     private javax.swing.JMenuItem jMenuItemListaCorredores;
+    private javax.swing.JMenuItem jMenuItemModificarCorredor;
     // End of variables declaration//GEN-END:variables
 }
