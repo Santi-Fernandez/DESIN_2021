@@ -5,9 +5,17 @@
  */
 package gestioncorredores.gui;
 
+import gestioncorredores.dto.Corredor;
 import gestioncorredores.gui.corredores.CrearCorredor;
 import gestioncorredores.gui.corredores.ListaCorredores;
 import gestioncorredores.gui.corredores.ModificarBorrarCorredores;
+import static gestioncorredores.logica.LogicaCorredor.anadirCorredor;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
+
 import java.util.Locale;
 
 /**
@@ -15,14 +23,33 @@ import java.util.Locale;
  * @author mad_d
  */
 public class PantallaPrincipal extends javax.swing.JFrame {
-    
-   
+
+    SimpleDateFormat formatoFecha = new SimpleDateFormat("dd-MM-yyyy");
 
     /**
      * Creates new form PantallaPrinciipal
      */
     public PantallaPrincipal() {
         initComponents();
+        crearCorredores();
+    }
+    
+    // Datos para con los que parte el programa
+
+    public void crearCorredores() {
+        
+        
+        Date date1 = new GregorianCalendar(1987, Calendar.FEBRUARY, 11).getTime();
+        Corredor corredor1 = new Corredor("Raul Losa", "71856335N", "C/ Uria 1", "685478954", date1 );
+        anadirCorredor(corredor1);
+        Date date2 = new GregorianCalendar(1990, Calendar.JULY, 24).getTime();
+        Corredor corredor2 = new Corredor("Maria Gallego", "71956345Z", "C/ Santa Susana 43", "603465279", date2 );
+        anadirCorredor(corredor2);
+        Date date3 = new GregorianCalendar(1995, Calendar.JANUARY, 2).getTime();
+        Corredor corredor3 = new Corredor("Javier Fernandez", "71648922Q", "C/ Tenderina 114", "664892466", date3 );
+        anadirCorredor(corredor3);
+        
+
     }
 
     /**
@@ -90,16 +117,15 @@ public class PantallaPrincipal extends javax.swing.JFrame {
     private void jMenuItemCrearCorredorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemCrearCorredorActionPerformed
         CrearCorredor crearCorredor = new CrearCorredor(this, true);
         crearCorredor.setVisible(true);
-        
-        
-                
+
+
     }//GEN-LAST:event_jMenuItemCrearCorredorActionPerformed
 
     private void jMenuItemListaCorredoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemListaCorredoresActionPerformed
         ListaCorredores listaCorredores = new ListaCorredores(this, true);
         listaCorredores.setVisible(true);
         listaCorredores.refrescarTabla();
-        
+
     }//GEN-LAST:event_jMenuItemListaCorredoresActionPerformed
 
     private void jMenuItemModificarCorredorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemModificarCorredorActionPerformed
@@ -138,12 +164,12 @@ public class PantallaPrincipal extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                Locale.setDefault(new Locale("es","ES"));
+                Locale.setDefault(new Locale("es", "ES"));
                 new PantallaPrincipal().setVisible(true);
             }
         });
     }
-    
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenu jMenu1;

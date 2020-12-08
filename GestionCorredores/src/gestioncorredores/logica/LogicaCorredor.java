@@ -19,6 +19,15 @@ import java.util.Scanner;
 public class LogicaCorredor {
     
     private static List<Corredor> listaCorredores = new ArrayList<Corredor>();
+    
+    public LogicaCorredor() {
+        
+        
+        /*Corredor corredor1 = new Corredor ("San","71656535N", "Uria","6854", new Date(1984,11,22));
+        anadirCorredor(corredor1);*/
+        
+        
+    }
    
     
     public static void anadirCorredor (Corredor corredor) {
