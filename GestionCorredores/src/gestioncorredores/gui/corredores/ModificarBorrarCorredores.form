@@ -56,7 +56,7 @@
                       <Group type="102" alignment="1" attributes="0">
                           <Component id="jButtonSeleccionar" min="-2" max="-2" attributes="0"/>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="jLabelSeleccion" min="-2" pref="183" max="-2" attributes="0"/>
+                          <Component id="jTextFieldBuscar" min="-2" pref="183" max="-2" attributes="0"/>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Component id="jButtonEliminar" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="32767" attributes="0"/>
@@ -76,8 +76,8 @@
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jButtonVolver" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jButtonSeleccionar" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jLabelSeleccion" alignment="3" min="-2" pref="32" max="-2" attributes="0"/>
                       <Component id="jButtonEliminar" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jTextFieldBuscar" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
               </Group>
@@ -126,13 +126,6 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonSeleccionarActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabelSeleccion">
-          <Properties>
-            <Property name="text" type="java.lang.String" editor="org.netbeans.modules.i18n.form.FormI18nStringEditor">
-              <ResourceString bundle="gestioncorredores/gui/corredores/Bundle.properties" key="ModificarBorrarCorredores.jLabelSeleccion.text" replaceFormat="org.openide.util.NbBundle.getMessage({sourceFileName}.class, &quot;{key}&quot;)"/>
-            </Property>
-          </Properties>
-        </Component>
         <Component class="javax.swing.JButton" name="jButtonEliminar">
           <Properties>
             <Property name="text" type="java.lang.String" editor="org.netbeans.modules.i18n.form.FormI18nStringEditor">
@@ -142,6 +135,13 @@
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonEliminarActionPerformed"/>
           </Events>
+        </Component>
+        <Component class="javax.swing.JTextField" name="jTextFieldBuscar">
+          <Properties>
+            <Property name="text" type="java.lang.String" editor="org.netbeans.modules.i18n.form.FormI18nStringEditor">
+              <ResourceString bundle="gestioncorredores/gui/corredores/Bundle.properties" key="ModificarBorrarCorredores.jTextFieldBuscar.text" replaceFormat="org.openide.util.NbBundle.getMessage({sourceFileName}.class, &quot;{key}&quot;)"/>
+            </Property>
+          </Properties>
         </Component>
       </SubComponents>
     </Container>

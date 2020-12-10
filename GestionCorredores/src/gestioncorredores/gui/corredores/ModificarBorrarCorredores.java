@@ -8,6 +8,7 @@ package gestioncorredores.gui.corredores;
 import gestioncorredores.gui.corredores.tablemodels.ModificarCorredoresTablemodel;
 import gestioncorredores.logica.LogicaCorredor;
 import javax.swing.JOptionPane;
+import javax.swing.RowFilter;
 import javax.swing.table.TableRowSorter;
 
 /**
@@ -17,6 +18,7 @@ import javax.swing.table.TableRowSorter;
 public class ModificarBorrarCorredores extends javax.swing.JDialog {
 
     private LogicaCorredor logicaCorredor = new LogicaCorredor();
+    private TableRowSorter<ModificarCorredoresTablemodel> sorter;
 
     /**
      * Creates new form ModificarBorrarCorredores
@@ -34,8 +36,10 @@ public class ModificarBorrarCorredores extends javax.swing.JDialog {
         ModificarCorredoresTablemodel tmc = new ModificarCorredoresTablemodel(logicaCorredor.getListaCorredores());
         jTableModBorCorredores.setModel(tmc);
 
-        TableRowSorter<ModificarCorredoresTablemodel> sorter = new TableRowSorter<>(tmc);
+        sorter = new TableRowSorter<>(tmc);
         jTableModBorCorredores.setRowSorter(sorter);
+
+        
 
     }
 
@@ -51,8 +55,8 @@ public class ModificarBorrarCorredores extends javax.swing.JDialog {
         jTableModBorCorredores = new javax.swing.JTable();
         jButtonVolver = new javax.swing.JButton();
         jButtonSeleccionar = new javax.swing.JButton();
-        jLabelSeleccion = new javax.swing.JLabel();
         jButtonEliminar = new javax.swing.JButton();
+        jTextFieldBuscar = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -83,14 +87,14 @@ public class ModificarBorrarCorredores extends javax.swing.JDialog {
             }
         });
 
-        jLabelSeleccion.setText(org.openide.util.NbBundle.getMessage(ModificarBorrarCorredores.class, "ModificarBorrarCorredores.jLabelSeleccion.text")); // NOI18N
-
         jButtonEliminar.setText(org.openide.util.NbBundle.getMessage(ModificarBorrarCorredores.class, "ModificarBorrarCorredores.jButtonEliminar.text")); // NOI18N
         jButtonEliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonEliminarActionPerformed(evt);
             }
         });
+
+        jTextFieldBuscar.setText(org.openide.util.NbBundle.getMessage(ModificarBorrarCorredores.class, "ModificarBorrarCorredores.jTextFieldBuscar.text")); // NOI18N
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -105,7 +109,7 @@ public class ModificarBorrarCorredores extends javax.swing.JDialog {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addComponent(jButtonSeleccionar)
                         .addGap(18, 18, 18)
-                        .addComponent(jLabelSeleccion, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jTextFieldBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(jButtonEliminar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -121,8 +125,8 @@ public class ModificarBorrarCorredores extends javax.swing.JDialog {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonVolver)
                     .addComponent(jButtonSeleccionar)
-                    .addComponent(jLabelSeleccion, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButtonEliminar))
+                    .addComponent(jButtonEliminar)
+                    .addComponent(jTextFieldBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(17, 17, 17))
         );
 
@@ -151,8 +155,12 @@ public class ModificarBorrarCorredores extends javax.swing.JDialog {
     }//GEN-LAST:event_jButtonVolverActionPerformed
 
     private void jButtonSeleccionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSeleccionarActionPerformed
-        int seleccionado = jTableModBorCorredores.convertRowIndexToModel(jTableModBorCorredores.getSelectedRow());
-        jLabelSeleccion.setText(logicaCorredor.getListaCorredores().get(seleccionado).getDni());
+   
+        /*int seleccionado = jTableModBorCorredores.convertRowIndexToModel(jTableModBorCorredores.getSelectedRow());
+        jLabelSeleccion.setText(logicaCorredor.getListaCorredores().get(seleccionado).getDni());*/
+        
+        RowFilter<ModificarCorredoresTablemodel, Integer> filtro = RowFilter.regexFilter(jTextFieldBuscar.getText(), 0);
+        sorter.setRowFilter(filtro);
     }//GEN-LAST:event_jButtonSeleccionarActionPerformed
 
     private void jButtonEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEliminarActionPerformed
@@ -169,52 +177,52 @@ public class ModificarBorrarCorredores extends javax.swing.JDialog {
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ModificarBorrarCorredores.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ModificarBorrarCorredores.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ModificarBorrarCorredores.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ModificarBorrarCorredores.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the dialog */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                ModificarBorrarCorredores dialog = new ModificarBorrarCorredores(new javax.swing.JFrame(), true);
-                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
-                    @Override
-                    public void windowClosing(java.awt.event.WindowEvent e) {
-                        System.exit(0);
-                    }
-                });
-                dialog.setVisible(true);
-            }
-        });
-    }
+//    public static void main(String args[]) {
+//        /* Set the Nimbus look and feel */
+//        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+//        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+//         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+//         */
+//        try {
+//            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+//                if ("Nimbus".equals(info.getName())) {
+//                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+//                    break;
+//                }
+//            }
+//        } catch (ClassNotFoundException ex) {
+//            java.util.logging.Logger.getLogger(ModificarBorrarCorredores.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (InstantiationException ex) {
+//            java.util.logging.Logger.getLogger(ModificarBorrarCorredores.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (IllegalAccessException ex) {
+//            java.util.logging.Logger.getLogger(ModificarBorrarCorredores.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+//            java.util.logging.Logger.getLogger(ModificarBorrarCorredores.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        }
+//        //</editor-fold>
+//
+//        /* Create and display the dialog */
+//        java.awt.EventQueue.invokeLater(new Runnable() {
+//            public void run() {
+//                ModificarBorrarCorredores dialog = new ModificarBorrarCorredores(new javax.swing.JFrame(), true);
+//                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
+//                    @Override
+//                    public void windowClosing(java.awt.event.WindowEvent e) {
+//                        System.exit(0);
+//                    }
+//                });
+//                dialog.setVisible(true);
+//            }
+//        });
+//    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonEliminar;
     private javax.swing.JButton jButtonSeleccionar;
     private javax.swing.JButton jButtonVolver;
-    private javax.swing.JLabel jLabelSeleccion;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTableModBorCorredores;
+    private javax.swing.JTextField jTextFieldBuscar;
     // End of variables declaration//GEN-END:variables
 }
