@@ -39,8 +39,6 @@ public class ModificarBorrarCorredores extends javax.swing.JDialog {
         sorter = new TableRowSorter<>(tmc);
         jTableModBorCorredores.setRowSorter(sorter);
 
-        
-
     }
 
     /**
@@ -57,6 +55,17 @@ public class ModificarBorrarCorredores extends javax.swing.JDialog {
         jButtonSeleccionar = new javax.swing.JButton();
         jButtonEliminar = new javax.swing.JButton();
         jTextFieldBuscar = new javax.swing.JTextField();
+        jButtonEditar = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        jTextFieldNombre = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
+        jTextFieldDni = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
+        jTextFieldDireccion = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
+        jTextFieldTelefono = new javax.swing.JTextField();
+        jLabel5 = new javax.swing.JLabel();
+        jSpinnerFechaNacimiento = new javax.swing.JSpinner();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -71,6 +80,11 @@ public class ModificarBorrarCorredores extends javax.swing.JDialog {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        jTableModBorCorredores.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTableModBorCorredoresMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(jTableModBorCorredores);
 
         jButtonVolver.setText(org.openide.util.NbBundle.getMessage(ModificarBorrarCorredores.class, "ModificarBorrarCorredores.jButtonVolver.text")); // NOI18N
@@ -96,6 +110,33 @@ public class ModificarBorrarCorredores extends javax.swing.JDialog {
 
         jTextFieldBuscar.setText(org.openide.util.NbBundle.getMessage(ModificarBorrarCorredores.class, "ModificarBorrarCorredores.jTextFieldBuscar.text")); // NOI18N
 
+        jButtonEditar.setText(org.openide.util.NbBundle.getMessage(ModificarBorrarCorredores.class, "ModificarBorrarCorredores.jButtonEditar.text")); // NOI18N
+        jButtonEditar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonEditarActionPerformed(evt);
+            }
+        });
+
+        jLabel1.setText(org.openide.util.NbBundle.getMessage(ModificarBorrarCorredores.class, "ModificarBorrarCorredores.jLabel1.text")); // NOI18N
+
+        jTextFieldNombre.setText(org.openide.util.NbBundle.getMessage(ModificarBorrarCorredores.class, "ModificarBorrarCorredores.jTextFieldNombre.text")); // NOI18N
+
+        jLabel2.setText(org.openide.util.NbBundle.getMessage(ModificarBorrarCorredores.class, "ModificarBorrarCorredores.jLabel2.text")); // NOI18N
+
+        jTextFieldDni.setText(org.openide.util.NbBundle.getMessage(ModificarBorrarCorredores.class, "ModificarBorrarCorredores.jTextFieldDni.text")); // NOI18N
+
+        jLabel3.setText(org.openide.util.NbBundle.getMessage(ModificarBorrarCorredores.class, "ModificarBorrarCorredores.jLabel3.text")); // NOI18N
+
+        jTextFieldDireccion.setText(org.openide.util.NbBundle.getMessage(ModificarBorrarCorredores.class, "ModificarBorrarCorredores.jTextFieldDireccion.text")); // NOI18N
+
+        jLabel4.setText(org.openide.util.NbBundle.getMessage(ModificarBorrarCorredores.class, "ModificarBorrarCorredores.jLabel4.text")); // NOI18N
+
+        jTextFieldTelefono.setText(org.openide.util.NbBundle.getMessage(ModificarBorrarCorredores.class, "ModificarBorrarCorredores.jTextFieldTelefono.text")); // NOI18N
+
+        jLabel5.setText(org.openide.util.NbBundle.getMessage(ModificarBorrarCorredores.class, "ModificarBorrarCorredores.jLabel5.text")); // NOI18N
+
+        jSpinnerFechaNacimiento.setModel(new javax.swing.SpinnerDateModel());
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -104,29 +145,69 @@ public class ModificarBorrarCorredores extends javax.swing.JDialog {
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 869, Short.MAX_VALUE)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 881, Short.MAX_VALUE)
                         .addContainerGap())
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jButtonSeleccionar)
                         .addGap(18, 18, 18)
                         .addComponent(jTextFieldBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(jButtonEliminar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButtonEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jButtonVolver)
-                        .addGap(16, 16, 16))))
+                        .addGap(16, 16, 16))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel4)
+                                .addGap(18, 18, 18)
+                                .addComponent(jTextFieldTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jLabel5)
+                                .addGap(18, 18, 18)
+                                .addComponent(jSpinnerFechaNacimiento, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel1)
+                                .addGap(18, 18, 18)
+                                .addComponent(jTextFieldNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jLabel2)
+                                .addGap(18, 18, 18)
+                                .addComponent(jTextFieldDni, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jLabel3)
+                                .addGap(18, 18, 18)
+                                .addComponent(jTextFieldDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(180, 180, 180))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 310, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 236, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 137, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(jTextFieldNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2)
+                    .addComponent(jTextFieldDni, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel3)
+                    .addComponent(jTextFieldDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jTextFieldTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel5)
+                    .addComponent(jSpinnerFechaNacimiento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel4))
+                .addGap(62, 62, 62)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonVolver)
                     .addComponent(jButtonSeleccionar)
                     .addComponent(jButtonEliminar)
-                    .addComponent(jTextFieldBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTextFieldBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButtonEditar))
                 .addGap(17, 17, 17))
         );
 
@@ -155,10 +236,9 @@ public class ModificarBorrarCorredores extends javax.swing.JDialog {
     }//GEN-LAST:event_jButtonVolverActionPerformed
 
     private void jButtonSeleccionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSeleccionarActionPerformed
-   
+
         /*int seleccionado = jTableModBorCorredores.convertRowIndexToModel(jTableModBorCorredores.getSelectedRow());
         jLabelSeleccion.setText(logicaCorredor.getListaCorredores().get(seleccionado).getDni());*/
-        
         RowFilter<ModificarCorredoresTablemodel, Integer> filtro = RowFilter.regexFilter(jTextFieldBuscar.getText(), 0);
         sorter.setRowFilter(filtro);
     }//GEN-LAST:event_jButtonSeleccionarActionPerformed
@@ -173,6 +253,27 @@ public class ModificarBorrarCorredores extends javax.swing.JDialog {
         rellenarTablaCorredores();
 
     }//GEN-LAST:event_jButtonEliminarActionPerformed
+
+    private void jButtonEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEditarActionPerformed
+        int seleccionado = jTableModBorCorredores.convertRowIndexToModel(jTableModBorCorredores.getSelectedRow());
+         int resultado = JOptionPane.showConfirmDialog(this, "¿Modificar corredor?", "Modificar", JOptionPane.YES_NO_OPTION);
+        if (resultado == JOptionPane.YES_OPTION) {
+            logicaCorredor.getListaCorredores().get(seleccionado).setNombre(jTextFieldNombre.toString());
+        }
+        rellenarTablaCorredores();
+        
+
+    }//GEN-LAST:event_jButtonEditarActionPerformed
+
+    private void jTableModBorCorredoresMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableModBorCorredoresMouseClicked
+        int seleccionado = jTableModBorCorredores.convertRowIndexToModel(jTableModBorCorredores.getSelectedRow());
+        jTextFieldNombre.setText(logicaCorredor.getListaCorredores().get(seleccionado).getNombre());
+        jTextFieldDni.setText(logicaCorredor.getListaCorredores().get(seleccionado).getDni());
+        jTextFieldDireccion.setText(logicaCorredor.getListaCorredores().get(seleccionado).getDireccion());
+        jTextFieldTelefono.setText(logicaCorredor.getListaCorredores().get(seleccionado).getTelefono());
+        jSpinnerFechaNacimiento.setValue(logicaCorredor.getListaCorredores().get(seleccionado).getFechaNacimiento());
+
+    }//GEN-LAST:event_jTableModBorCorredoresMouseClicked
 
     /**
      * @param args the command line arguments
@@ -217,12 +318,23 @@ public class ModificarBorrarCorredores extends javax.swing.JDialog {
 //    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButtonEditar;
     private javax.swing.JButton jButtonEliminar;
     private javax.swing.JButton jButtonSeleccionar;
     private javax.swing.JButton jButtonVolver;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JSpinner jSpinnerFechaNacimiento;
     private javax.swing.JTable jTableModBorCorredores;
     private javax.swing.JTextField jTextFieldBuscar;
+    private javax.swing.JTextField jTextFieldDireccion;
+    private javax.swing.JTextField jTextFieldDni;
+    private javax.swing.JTextField jTextFieldNombre;
+    private javax.swing.JTextField jTextFieldTelefono;
     // End of variables declaration//GEN-END:variables
 }
