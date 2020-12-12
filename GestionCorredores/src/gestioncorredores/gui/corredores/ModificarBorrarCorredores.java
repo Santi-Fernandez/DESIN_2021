@@ -7,6 +7,7 @@ package gestioncorredores.gui.corredores;
 
 import gestioncorredores.gui.corredores.tablemodels.ModificarCorredoresTablemodel;
 import gestioncorredores.logica.LogicaCorredor;
+import java.util.Date;
 import javax.swing.JOptionPane;
 import javax.swing.RowFilter;
 import javax.swing.table.TableRowSorter;
@@ -19,6 +20,7 @@ public class ModificarBorrarCorredores extends javax.swing.JDialog {
 
     private LogicaCorredor logicaCorredor = new LogicaCorredor();
     private TableRowSorter<ModificarCorredoresTablemodel> sorter;
+    
 
     /**
      * Creates new form ModificarBorrarCorredores
@@ -258,7 +260,12 @@ public class ModificarBorrarCorredores extends javax.swing.JDialog {
         int seleccionado = jTableModBorCorredores.convertRowIndexToModel(jTableModBorCorredores.getSelectedRow());
          int resultado = JOptionPane.showConfirmDialog(this, "¿Modificar corredor?", "Modificar", JOptionPane.YES_NO_OPTION);
         if (resultado == JOptionPane.YES_OPTION) {
-            logicaCorredor.getListaCorredores().get(seleccionado).setNombre(jTextFieldNombre.toString());
+            logicaCorredor.getListaCorredores().get(seleccionado).setNombre(jTextFieldNombre.getText());
+            logicaCorredor.getListaCorredores().get(seleccionado).setDni(jTextFieldDni.getText());
+            logicaCorredor.getListaCorredores().get(seleccionado).setDireccion(jTextFieldDireccion.getText());
+            logicaCorredor.getListaCorredores().get(seleccionado).setTelefono(jTextFieldTelefono.getText());            
+            logicaCorredor.getListaCorredores().get(seleccionado).setFechaNacimiento((Date)jSpinnerFechaNacimiento.getValue());
+            
         }
         rellenarTablaCorredores();
         
@@ -272,6 +279,8 @@ public class ModificarBorrarCorredores extends javax.swing.JDialog {
         jTextFieldDireccion.setText(logicaCorredor.getListaCorredores().get(seleccionado).getDireccion());
         jTextFieldTelefono.setText(logicaCorredor.getListaCorredores().get(seleccionado).getTelefono());
         jSpinnerFechaNacimiento.setValue(logicaCorredor.getListaCorredores().get(seleccionado).getFechaNacimiento());
+        
+        
 
     }//GEN-LAST:event_jTableModBorCorredoresMouseClicked
 
