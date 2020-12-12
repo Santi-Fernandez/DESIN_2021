@@ -6,6 +6,7 @@
 package gestioncorredores.gui;
 
 import gestioncorredores.dto.Corredor;
+import gestioncorredores.gui.carreras.CrearCarrera;
 import gestioncorredores.gui.corredores.CrearCorredor;
 import gestioncorredores.gui.corredores.ListaCorredores;
 import gestioncorredores.gui.corredores.ModificarBorrarCorredores;
@@ -72,6 +73,8 @@ public class PantallaPrincipal extends javax.swing.JFrame {
         jMenuItemCrearCorredor = new javax.swing.JMenuItem();
         jMenuItemListaCorredores = new javax.swing.JMenuItem();
         jMenuItemModificarCorredor = new javax.swing.JMenuItem();
+        jMenu3 = new javax.swing.JMenu();
+        jMenuItemCrearCarrera = new javax.swing.JMenuItem();
 
         jMenu2.setText("jMenu2");
 
@@ -104,6 +107,18 @@ public class PantallaPrincipal extends javax.swing.JFrame {
         jMenu1.add(jMenuItemModificarCorredor);
 
         jMenuBar1.add(jMenu1);
+
+        jMenu3.setText("Carrera");
+
+        jMenuItemCrearCarrera.setText("Crear Carrera ...");
+        jMenuItemCrearCarrera.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemCrearCarreraActionPerformed(evt);
+            }
+        });
+        jMenu3.add(jMenuItemCrearCarrera);
+
+        jMenuBar1.add(jMenu3);
 
         setJMenuBar(jMenuBar1);
 
@@ -139,6 +154,11 @@ public class PantallaPrincipal extends javax.swing.JFrame {
         ModificarBorrarCorredores modificarBorrarCorredores = new ModificarBorrarCorredores(this, true);
         modificarBorrarCorredores.setVisible(true);
     }//GEN-LAST:event_jMenuItemModificarCorredorActionPerformed
+
+    private void jMenuItemCrearCarreraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemCrearCarreraActionPerformed
+        CrearCarrera crearCarrera = new CrearCarrera(this, true);
+        crearCarrera.setVisible(true);
+    }//GEN-LAST:event_jMenuItemCrearCarreraActionPerformed
 
     /**
      * @param args the command line arguments
@@ -181,7 +201,9 @@ public class PantallaPrincipal extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenu jMenu3;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItemCrearCarrera;
     private javax.swing.JMenuItem jMenuItemCrearCorredor;
     private javax.swing.JMenuItem jMenuItemListaCorredores;
     private javax.swing.JMenuItem jMenuItemModificarCorredor;
