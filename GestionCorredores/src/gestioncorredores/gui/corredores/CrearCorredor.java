@@ -43,7 +43,7 @@ public class CrearCorredor extends javax.swing.JDialog {
         if(validationPanel.getProblem()== null)
                     jButtonCrear.setEnabled(true);
         
-        //Activacion del boton crear cuando no hya fallos de validacion
+        //Activacion del boton crear cuando no hay fallos de validacion
         validationPanel.addChangeListener(new ChangeListener() {
             @Override
             public void stateChanged(ChangeEvent ce) {

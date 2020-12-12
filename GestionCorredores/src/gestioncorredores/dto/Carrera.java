@@ -89,6 +89,13 @@ public class Carrera {
         this.carreraAcabada = carreraAcabada;
     }
     
+    public void anadirDniDorsal(String dni, String dorsal){
+        
+        dniParticipante.add(dni);
+        dorsalParticipante.add(dorsal);
+        
+    }
+    
     
     
     
