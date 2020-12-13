@@ -48,9 +48,17 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItemCrearCarreraActionPerformed"/>
               </Events>
             </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="jMenuItemEditarCarrera">
+            <MenuItem class="javax.swing.JMenuItem" name="jMenuItemListaCarreras">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Lista Carreras ..."/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItemListaCarrerasActionPerformed"/>
+              </Events>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="jMenuItemEditarCarrera">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Editar Carrera ..."/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItemEditarCarreraActionPerformed"/>

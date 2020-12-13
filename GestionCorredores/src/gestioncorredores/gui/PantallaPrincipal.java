@@ -8,6 +8,7 @@ package gestioncorredores.gui;
 import gestioncorredores.dto.Corredor;
 import gestioncorredores.gui.carreras.CrearCarrera;
 import gestioncorredores.gui.carreras.ListaCarreras;
+import gestioncorredores.gui.carreras.ModificarBorrarCarreras;
 import gestioncorredores.gui.corredores.CrearCorredor;
 import gestioncorredores.gui.corredores.ListaCorredores;
 import gestioncorredores.gui.corredores.ModificarBorrarCorredores;
@@ -25,7 +26,7 @@ import java.util.Locale;
  * @author mad_d
  */
 public class PantallaPrincipal extends javax.swing.JFrame {
-
+    
     SimpleDateFormat formatoFecha = new SimpleDateFormat("dd-MM-yyyy");
 
     /**
@@ -35,30 +36,26 @@ public class PantallaPrincipal extends javax.swing.JFrame {
         initComponents();
         crearCorredores();
     }
-    
-    // Datos para con los que parte el programa
 
+    // Datos con los que parte el programa
     public void crearCorredores() {
         
-        
         Date date1 = new GregorianCalendar(1987, Calendar.FEBRUARY, 11).getTime();
-        Corredor corredor1 = new Corredor("Raul Losa", "71856335N", "C/ Uria 1", "685478954", date1 );
+        Corredor corredor1 = new Corredor("Raul Losa", "71856335N", "C/ Uria 1", "685478954", date1);
         anadirCorredor(corredor1);
         Date date2 = new GregorianCalendar(1990, Calendar.JULY, 24).getTime();
-        Corredor corredor2 = new Corredor("Maria Gallego", "71956345Z", "C/ Santa Susana 43", "603465279", date2 );
+        Corredor corredor2 = new Corredor("Maria Gallego", "71956345Z", "C/ Santa Susana 43", "603465279", date2);
         anadirCorredor(corredor2);
         Date date3 = new GregorianCalendar(1995, Calendar.JANUARY, 2).getTime();
-        Corredor corredor3 = new Corredor("Javier Fernandez", "71648922Q", "C/ Tenderina 114", "664892466", date3 );
+        Corredor corredor3 = new Corredor("Javier Fernandez", "71648922Q", "C/ Tenderina 114", "664892466", date3);
         anadirCorredor(corredor3);
         Date date4 = new GregorianCalendar(2000, Calendar.DECEMBER, 9).getTime();
-        Corredor corredor4 = new Corredor("Laura Abadia", "71569924X", "C/ Independencia 7", "696881425", date4 );
+        Corredor corredor4 = new Corredor("Laura Abadia", "71569924X", "C/ Independencia 7", "696881425", date4);
         anadirCorredor(corredor4);
         Date date5 = new GregorianCalendar(1976, Calendar.NOVEMBER, 14).getTime();
-        Corredor corredor5 = new Corredor("Maite Alonso", "71884123D", "C/ Rosal 12 ", "687441126", date5 );
+        Corredor corredor5 = new Corredor("Maite Alonso", "71884123D", "C/ Rosal 12 ", "687441126", date5);
         anadirCorredor(corredor5);
         
-        
-
     }
 
     /**
@@ -75,6 +72,7 @@ public class PantallaPrincipal extends javax.swing.JFrame {
         jMenuItemModificarCorredor = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
         jMenuItemCrearCarrera = new javax.swing.JMenuItem();
+        jMenuItemListaCarreras = new javax.swing.JMenuItem();
         jMenuItemEditarCarrera = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -117,7 +115,15 @@ public class PantallaPrincipal extends javax.swing.JFrame {
         });
         jMenu3.add(jMenuItemCrearCarrera);
 
-        jMenuItemEditarCarrera.setText("Lista Carreras ...");
+        jMenuItemListaCarreras.setText("Lista Carreras ...");
+        jMenuItemListaCarreras.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemListaCarrerasActionPerformed(evt);
+            }
+        });
+        jMenu3.add(jMenuItemListaCarreras);
+
+        jMenuItemEditarCarrera.setText("Editar Carrera ...");
         jMenuItemEditarCarrera.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItemEditarCarreraActionPerformed(evt);
@@ -146,7 +152,7 @@ public class PantallaPrincipal extends javax.swing.JFrame {
     private void jMenuItemCrearCorredorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemCrearCorredorActionPerformed
         CrearCorredor crearCorredor = new CrearCorredor(this, true);
         crearCorredor.setVisible(true);
-
+        
 
     }//GEN-LAST:event_jMenuItemCrearCorredorActionPerformed
 
@@ -167,9 +173,15 @@ public class PantallaPrincipal extends javax.swing.JFrame {
         crearCarrera.setVisible(true);
     }//GEN-LAST:event_jMenuItemCrearCarreraActionPerformed
 
+    private void jMenuItemListaCarrerasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemListaCarrerasActionPerformed
+        ListaCarreras listaCarreras = new ListaCarreras(this, true);
+        listaCarreras.setVisible(true);
+    }//GEN-LAST:event_jMenuItemListaCarrerasActionPerformed
+
     private void jMenuItemEditarCarreraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemEditarCarreraActionPerformed
-       ListaCarreras editarCarrera = new ListaCarreras(this, true);
-       editarCarrera.setVisible(true);
+        ModificarBorrarCarreras modificarBorrarCarreras = new ModificarBorrarCarreras(this, true);
+        modificarBorrarCarreras.setVisible(true);
+        
     }//GEN-LAST:event_jMenuItemEditarCarreraActionPerformed
 
     /**
@@ -217,6 +229,7 @@ public class PantallaPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItemCrearCarrera;
     private javax.swing.JMenuItem jMenuItemCrearCorredor;
     private javax.swing.JMenuItem jMenuItemEditarCarrera;
+    private javax.swing.JMenuItem jMenuItemListaCarreras;
     private javax.swing.JMenuItem jMenuItemListaCorredores;
     private javax.swing.JMenuItem jMenuItemModificarCorredor;
     // End of variables declaration//GEN-END:variables
