@@ -7,6 +7,7 @@ package gestioncorredores.gui.carreras;
 
 import gestioncorredores.gui.carreras.tablemodels.ModificarCarrerasTableModel;
 import gestioncorredores.logica.LogicaCarreras;
+import javax.swing.RowFilter;
 import javax.swing.table.TableRowSorter;
 
 /**
@@ -73,6 +74,11 @@ public class ModificarBorrarCarreras extends javax.swing.JDialog {
         jScrollPane1.setViewportView(jTableCarreras);
 
         jButtonVolver.setText(org.openide.util.NbBundle.getMessage(ModificarBorrarCarreras.class, "ModificarBorrarCarreras.jButtonVolver.text")); // NOI18N
+        jButtonVolver.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonVolverActionPerformed(evt);
+            }
+        });
 
         jLabel1.setText(org.openide.util.NbBundle.getMessage(ModificarBorrarCarreras.class, "ModificarBorrarCarreras.jLabel1.text")); // NOI18N
 
@@ -85,6 +91,11 @@ public class ModificarBorrarCarreras extends javax.swing.JDialog {
         jLabel3.setText(org.openide.util.NbBundle.getMessage(ModificarBorrarCarreras.class, "ModificarBorrarCarreras.jLabel3.text")); // NOI18N
 
         jButtonBuscar.setText(org.openide.util.NbBundle.getMessage(ModificarBorrarCarreras.class, "ModificarBorrarCarreras.jButtonBuscar.text")); // NOI18N
+        jButtonBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonBuscarActionPerformed(evt);
+            }
+        });
 
         jTextFieldBuscar.setText(org.openide.util.NbBundle.getMessage(ModificarBorrarCarreras.class, "ModificarBorrarCarreras.jTextFieldBuscar.text")); // NOI18N
 
@@ -157,47 +168,56 @@ public class ModificarBorrarCarreras extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jButtonVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonVolverActionPerformed
+        setVisible(false);
+    }//GEN-LAST:event_jButtonVolverActionPerformed
+
+    private void jButtonBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBuscarActionPerformed
+        RowFilter<ModificarCarrerasTableModel, Integer> filtro = RowFilter.regexFilter(jTextFieldBuscar.getText(), 0);
+        sorter.setRowFilter(filtro);
+    }//GEN-LAST:event_jButtonBuscarActionPerformed
+
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ModificarBorrarCarreras.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ModificarBorrarCarreras.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ModificarBorrarCarreras.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ModificarBorrarCarreras.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the dialog */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                ModificarBorrarCarreras dialog = new ModificarBorrarCarreras(new javax.swing.JFrame(), true);
-                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
-                    @Override
-                    public void windowClosing(java.awt.event.WindowEvent e) {
-                        System.exit(0);
-                    }
-                });
-                dialog.setVisible(true);
-            }
-        });
-    }
+//    public static void main(String args[]) {
+//        /* Set the Nimbus look and feel */
+//        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+//        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+//         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+//         */
+//        try {
+//            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+//                if ("Nimbus".equals(info.getName())) {
+//                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+//                    break;
+//                }
+//            }
+//        } catch (ClassNotFoundException ex) {
+//            java.util.logging.Logger.getLogger(ModificarBorrarCarreras.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (InstantiationException ex) {
+//            java.util.logging.Logger.getLogger(ModificarBorrarCarreras.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (IllegalAccessException ex) {
+//            java.util.logging.Logger.getLogger(ModificarBorrarCarreras.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+//            java.util.logging.Logger.getLogger(ModificarBorrarCarreras.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        }
+//        //</editor-fold>
+//
+//        /* Create and display the dialog */
+//        java.awt.EventQueue.invokeLater(new Runnable() {
+//            public void run() {
+//                ModificarBorrarCarreras dialog = new ModificarBorrarCarreras(new javax.swing.JFrame(), true);
+//                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
+//                    @Override
+//                    public void windowClosing(java.awt.event.WindowEvent e) {
+//                        System.exit(0);
+//                    }
+//                });
+//                dialog.setVisible(true);
+//            }
+//        });
+//    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonBuscar;

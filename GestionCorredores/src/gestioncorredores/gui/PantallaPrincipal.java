@@ -5,6 +5,7 @@
  */
 package gestioncorredores.gui;
 
+import gestioncorredores.dto.Carrera;
 import gestioncorredores.dto.Corredor;
 import gestioncorredores.gui.carreras.CrearCarrera;
 import gestioncorredores.gui.carreras.ListaCarreras;
@@ -12,6 +13,7 @@ import gestioncorredores.gui.carreras.ModificarBorrarCarreras;
 import gestioncorredores.gui.corredores.CrearCorredor;
 import gestioncorredores.gui.corredores.ListaCorredores;
 import gestioncorredores.gui.corredores.ModificarBorrarCorredores;
+import gestioncorredores.logica.LogicaCarreras;
 import static gestioncorredores.logica.LogicaCorredor.anadirCorredor;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -26,7 +28,7 @@ import java.util.Locale;
  * @author mad_d
  */
 public class PantallaPrincipal extends javax.swing.JFrame {
-    
+
     SimpleDateFormat formatoFecha = new SimpleDateFormat("dd-MM-yyyy");
 
     /**
@@ -39,7 +41,7 @@ public class PantallaPrincipal extends javax.swing.JFrame {
 
     // Datos con los que parte el programa
     public void crearCorredores() {
-        
+
         Date date1 = new GregorianCalendar(1987, Calendar.FEBRUARY, 11).getTime();
         Corredor corredor1 = new Corredor("Raul Losa", "71856335N", "C/ Uria 1", "685478954", date1);
         anadirCorredor(corredor1);
@@ -55,7 +57,21 @@ public class PantallaPrincipal extends javax.swing.JFrame {
         Date date5 = new GregorianCalendar(1976, Calendar.NOVEMBER, 14).getTime();
         Corredor corredor5 = new Corredor("Maite Alonso", "71884123D", "C/ Rosal 12 ", "687441126", date5);
         anadirCorredor(corredor5);
-        
+
+    }
+
+    public void crearCarreras() {
+
+        Carrera carrera1, carrera2, carrera3, carrera4;
+        carrera1 = new Carrera("Medio Maratón de Azkoitia", "Azkoitia", new GregorianCalendar(2020, Calendar.FEBRUARY, 11).getTime(), 5, true);
+        carrera2 = new Carrera("15k Nocturna Valencia", "Valencia", new GregorianCalendar(2020, Calendar.SEPTEMBER, 26).getTime(), 5, true);
+        carrera3 = new Carrera("Cursa del Patrimoni Eivissa", "Ibiza", new GregorianCalendar(2020, Calendar.DECEMBER, 7).getTime(), 4, true);
+        carrera4 = new Carrera("Carrera Popular Coruña 10", "Coruña", new GregorianCalendar(2021, Calendar.JANUARY, 22).getTime(), 10, false);
+        LogicaCarreras.anadirCarrera(carrera1);
+        LogicaCarreras.anadirCarrera(carrera2);
+        LogicaCarreras.anadirCarrera(carrera3);
+        LogicaCarreras.anadirCarrera(carrera4);
+
     }
 
     /**
@@ -152,7 +168,7 @@ public class PantallaPrincipal extends javax.swing.JFrame {
     private void jMenuItemCrearCorredorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemCrearCorredorActionPerformed
         CrearCorredor crearCorredor = new CrearCorredor(this, true);
         crearCorredor.setVisible(true);
-        
+
 
     }//GEN-LAST:event_jMenuItemCrearCorredorActionPerformed
 
@@ -181,7 +197,7 @@ public class PantallaPrincipal extends javax.swing.JFrame {
     private void jMenuItemEditarCarreraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemEditarCarreraActionPerformed
         ModificarBorrarCarreras modificarBorrarCarreras = new ModificarBorrarCarreras(this, true);
         modificarBorrarCarreras.setVisible(true);
-        
+
     }//GEN-LAST:event_jMenuItemEditarCarreraActionPerformed
 
     /**
