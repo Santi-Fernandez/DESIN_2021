@@ -31,7 +31,7 @@ public class CrearCorredor extends javax.swing.JDialog {
         pantallaPrincipal = (PantallaPrincipal) parent;
         initComponents();
          //Por defecto el boton crear está deshabilitado
-         jButtonCrear.setEnabled(false);
+        jButtonCrear.setEnabled(false);
         
         //Validacion formulario
         ValidationGroup group = validationPanel.getValidationGroup();

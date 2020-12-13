@@ -13,12 +13,12 @@ import java.util.Date;
  * @author mad_d
  */
 public class Carrera {
-    
+
     String nombre, lugar;
     Date fechaCarrera;
     int numeroParticipantes;
-    ArrayList<String> dniParticipante = new ArrayList<String>();
-    ArrayList<String> dorsalParticipante = new ArrayList<String>();
+    //ArrayList donde se guardan los tiempos de cada corredor en al carrera
+    ArrayList<Tiempo> tiempoCorredores = new ArrayList<>();
     boolean carreraAcabada;
 
     public Carrera(String nombre, String lugar, Date fechaCarrera, int numeroParticipantes, boolean carreraAcabada) {
@@ -28,9 +28,9 @@ public class Carrera {
         this.numeroParticipantes = numeroParticipantes;
         this.carreraAcabada = carreraAcabada;
     }
-    
-    public Carrera(){
-        this(null,null,null,0,false);
+
+    public Carrera() {
+        this(null, null, null, 0, false);
     }
 
     public String getNombre() {
@@ -65,22 +65,6 @@ public class Carrera {
         this.numeroParticipantes = numeroParticipantes;
     }
 
-    public ArrayList<String> getDniParticipante() {
-        return dniParticipante;
-    }
-
-    public void setDniParticipante(ArrayList<String> dniParticipante) {
-        this.dniParticipante = dniParticipante;
-    }
-
-    public ArrayList<String> getDorsalParticipante() {
-        return dorsalParticipante;
-    }
-
-    public void setDorsalParticipante(ArrayList<String> dorsalParticipante) {
-        this.dorsalParticipante = dorsalParticipante;
-    }
-
     public boolean isCarreraAcabada() {
         return carreraAcabada;
     }
@@ -88,15 +72,15 @@ public class Carrera {
     public void setCarreraAcabada(boolean carreraAcabada) {
         this.carreraAcabada = carreraAcabada;
     }
-    
-    public void anadirDniDorsal(String dni, String dorsal){
-        
-        dniParticipante.add(dni);
-        dorsalParticipante.add(dorsal);
-        
+
+    public void anadirTiempo(Tiempo tiempo) {
+
+        tiempoCorredores.add(tiempo);
+
     }
-    
-    
-    
-    
+
+    public ArrayList<Tiempo> getTiempoCorredores() {
+        return tiempoCorredores;
+    }
+
 }

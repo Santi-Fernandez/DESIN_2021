@@ -10,7 +10,7 @@ package gestioncorredores.dto;
  * @author mad_d
  */
 public class Tiempo {
-    
+
     String dni;
     String dorsal;
     String tiempo;
@@ -22,7 +22,13 @@ public class Tiempo {
     }
 
     public Tiempo() {
-        this("","","");
+        this("", "", "");
+    }
+    
+    public Tiempo(String Dni, String dorsal) {
+        this.dni = Dni;
+        this.dorsal = dorsal;
+        this.tiempo = "";
     }
 
     public String getDni() {
@@ -48,17 +54,15 @@ public class Tiempo {
     public void setTiempo(String tiempo) {
         this.tiempo = tiempo;
     }
-    
-    public String [] arrayCorredores () {
-        
-        String [] corredor = new String[2];
-        corredor[0]=dni;
-        corredor[1]=dorsal;
-        
+
+    public String[] arrayCorredores() {
+
+        String[] corredor = new String[2];
+        corredor[0] = dni;
+        corredor[1] = dorsal;
+
         return corredor;
-        
+
     }
-    
-    
-    
+
 }
