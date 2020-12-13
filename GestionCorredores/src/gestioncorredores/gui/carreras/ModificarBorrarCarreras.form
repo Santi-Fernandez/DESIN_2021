@@ -113,6 +113,9 @@
               </Table>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jTableCarrerasMouseClicked"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>
@@ -162,6 +165,11 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JSpinner" name="jSpinnerFecha">
+      <Properties>
+        <Property name="model" type="javax.swing.SpinnerModel" editor="org.netbeans.modules.form.editors2.SpinnerModelEditor">
+          <SpinnerModel initial="now" stepSize="5" type="date"/>
+        </Property>
+      </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="jButtonBuscar">
       <Properties>
@@ -186,6 +194,9 @@
           <ResourceString bundle="gestioncorredores/gui/carreras/Bundle.properties" key="ModificarBorrarCarreras.jButtonEliminar.text" replaceFormat="org.openide.util.NbBundle.getMessage({sourceFileName}.class, &quot;{key}&quot;)"/>
         </Property>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonEliminarActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="jButtonEditar">
       <Properties>
@@ -193,6 +204,9 @@
           <ResourceString bundle="gestioncorredores/gui/carreras/Bundle.properties" key="ModificarBorrarCarreras.jButtonEditar.text" replaceFormat="org.openide.util.NbBundle.getMessage({sourceFileName}.class, &quot;{key}&quot;)"/>
         </Property>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonEditarActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

@@ -7,6 +7,8 @@ package gestioncorredores.gui.carreras;
 
 import gestioncorredores.gui.carreras.tablemodels.ModificarCarrerasTableModel;
 import gestioncorredores.logica.LogicaCarreras;
+import java.util.Date;
+import javax.swing.JOptionPane;
 import javax.swing.RowFilter;
 import javax.swing.table.TableRowSorter;
 
@@ -15,9 +17,9 @@ import javax.swing.table.TableRowSorter;
  * @author mad_d
  */
 public class ModificarBorrarCarreras extends javax.swing.JDialog {
-    
+
     private LogicaCarreras logicaCarreras = new LogicaCarreras();
-     private TableRowSorter<ModificarCarrerasTableModel> sorter;
+    private TableRowSorter<ModificarCarrerasTableModel> sorter;
 
     /**
      * Creates new form ModificarBorrarCarreras
@@ -25,14 +27,15 @@ public class ModificarBorrarCarreras extends javax.swing.JDialog {
     public ModificarBorrarCarreras(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        jButtonEditar.setEnabled(false);
         rellenarTablaCarreras();
     }
-    
-    public void rellenarTablaCarreras () {
-        
+
+    public void rellenarTablaCarreras() {
+
         ModificarCarrerasTableModel mct = new ModificarCarrerasTableModel(logicaCarreras.getListaCarreras());
         jTableCarreras.setModel(mct);
-        
+
         sorter = new TableRowSorter<>(mct);
         jTableCarreras.setRowSorter(sorter);
     }
@@ -71,6 +74,11 @@ public class ModificarBorrarCarreras extends javax.swing.JDialog {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        jTableCarreras.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTableCarrerasMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(jTableCarreras);
 
         jButtonVolver.setText(org.openide.util.NbBundle.getMessage(ModificarBorrarCarreras.class, "ModificarBorrarCarreras.jButtonVolver.text")); // NOI18N
@@ -90,6 +98,8 @@ public class ModificarBorrarCarreras extends javax.swing.JDialog {
 
         jLabel3.setText(org.openide.util.NbBundle.getMessage(ModificarBorrarCarreras.class, "ModificarBorrarCarreras.jLabel3.text")); // NOI18N
 
+        jSpinnerFecha.setModel(new javax.swing.SpinnerDateModel());
+
         jButtonBuscar.setText(org.openide.util.NbBundle.getMessage(ModificarBorrarCarreras.class, "ModificarBorrarCarreras.jButtonBuscar.text")); // NOI18N
         jButtonBuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -100,8 +110,18 @@ public class ModificarBorrarCarreras extends javax.swing.JDialog {
         jTextFieldBuscar.setText(org.openide.util.NbBundle.getMessage(ModificarBorrarCarreras.class, "ModificarBorrarCarreras.jTextFieldBuscar.text")); // NOI18N
 
         jButtonEliminar.setText(org.openide.util.NbBundle.getMessage(ModificarBorrarCarreras.class, "ModificarBorrarCarreras.jButtonEliminar.text")); // NOI18N
+        jButtonEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonEliminarActionPerformed(evt);
+            }
+        });
 
         jButtonEditar.setText(org.openide.util.NbBundle.getMessage(ModificarBorrarCarreras.class, "ModificarBorrarCarreras.jButtonEditar.text")); // NOI18N
+        jButtonEditar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonEditarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -176,6 +196,43 @@ public class ModificarBorrarCarreras extends javax.swing.JDialog {
         RowFilter<ModificarCarrerasTableModel, Integer> filtro = RowFilter.regexFilter(jTextFieldBuscar.getText(), 0);
         sorter.setRowFilter(filtro);
     }//GEN-LAST:event_jButtonBuscarActionPerformed
+
+    private void jButtonEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEliminarActionPerformed
+        int seleccionado = jTableCarreras.convertRowIndexToModel(jTableCarreras.getSelectedRow());
+        int resultado = JOptionPane.showConfirmDialog(this, "¿Eliminar carrera?", "Eliminar", JOptionPane.YES_NO_OPTION);
+        if (resultado == JOptionPane.YES_OPTION) {
+            logicaCarreras.getListaCarreras().remove(seleccionado);
+        }
+
+        rellenarTablaCarreras();
+    }//GEN-LAST:event_jButtonEliminarActionPerformed
+
+    private void jTableCarrerasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableCarrerasMouseClicked
+        int seleccionado = jTableCarreras.convertRowIndexToModel(jTableCarreras.getSelectedRow());
+        jButtonEditar.setEnabled(false);
+        jTextFieldNombre.setText("");
+        jTextFieldLugar.setText("");
+        //jSpinnerFecha.setValue(null); vaciar valor del spinner???
+        if (logicaCarreras.getListaCarreras().get(seleccionado).isCarreraAcabada() == false) {
+            jTextFieldNombre.setText(logicaCarreras.getListaCarreras().get(seleccionado).getNombre());
+            jTextFieldLugar.setText(logicaCarreras.getListaCarreras().get(seleccionado).getLugar());
+            jSpinnerFecha.setValue(logicaCarreras.getListaCarreras().get(seleccionado).getFechaCarrera());
+            jButtonEditar.setEnabled(true);
+        }
+
+
+    }//GEN-LAST:event_jTableCarrerasMouseClicked
+
+    private void jButtonEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEditarActionPerformed
+        int seleccionado = jTableCarreras.convertRowIndexToModel(jTableCarreras.getSelectedRow());
+        int resultado = JOptionPane.showConfirmDialog(this, "¿Modificar carrera?", "Modificar", JOptionPane.YES_NO_OPTION);
+        if (resultado == JOptionPane.YES_OPTION) {
+            logicaCarreras.getListaCarreras().get(seleccionado).setNombre(jTextFieldNombre.getText());
+            logicaCarreras.getListaCarreras().get(seleccionado).setLugar(jTextFieldLugar.getText());
+            logicaCarreras.getListaCarreras().get(seleccionado).setFechaCarrera((Date)jSpinnerFecha.getValue());
+        }
+        rellenarTablaCarreras();
+    }//GEN-LAST:event_jButtonEditarActionPerformed
 
     /**
      * @param args the command line arguments

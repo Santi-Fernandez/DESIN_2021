@@ -37,6 +37,7 @@ public class PantallaPrincipal extends javax.swing.JFrame {
     public PantallaPrincipal() {
         initComponents();
         crearCorredores();
+        crearCarreras();
     }
 
     // Datos con los que parte el programa
