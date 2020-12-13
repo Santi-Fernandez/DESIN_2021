@@ -7,6 +7,7 @@ package gestioncorredores.gui;
 
 import gestioncorredores.dto.Corredor;
 import gestioncorredores.gui.carreras.CrearCarrera;
+import gestioncorredores.gui.carreras.ListaCarreras;
 import gestioncorredores.gui.corredores.CrearCorredor;
 import gestioncorredores.gui.corredores.ListaCorredores;
 import gestioncorredores.gui.corredores.ModificarBorrarCorredores;
@@ -67,7 +68,6 @@ public class PantallaPrincipal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jMenu2 = new javax.swing.JMenu();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenuItemCrearCorredor = new javax.swing.JMenuItem();
@@ -75,8 +75,7 @@ public class PantallaPrincipal extends javax.swing.JFrame {
         jMenuItemModificarCorredor = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
         jMenuItemCrearCarrera = new javax.swing.JMenuItem();
-
-        jMenu2.setText("jMenu2");
+        jMenuItemEditarCarrera = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -117,6 +116,14 @@ public class PantallaPrincipal extends javax.swing.JFrame {
             }
         });
         jMenu3.add(jMenuItemCrearCarrera);
+
+        jMenuItemEditarCarrera.setText("Lista Carreras ...");
+        jMenuItemEditarCarrera.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemEditarCarreraActionPerformed(evt);
+            }
+        });
+        jMenu3.add(jMenuItemEditarCarrera);
 
         jMenuBar1.add(jMenu3);
 
@@ -160,6 +167,11 @@ public class PantallaPrincipal extends javax.swing.JFrame {
         crearCarrera.setVisible(true);
     }//GEN-LAST:event_jMenuItemCrearCarreraActionPerformed
 
+    private void jMenuItemEditarCarreraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemEditarCarreraActionPerformed
+       ListaCarreras editarCarrera = new ListaCarreras(this, true);
+       editarCarrera.setVisible(true);
+    }//GEN-LAST:event_jMenuItemEditarCarreraActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -200,11 +212,11 @@ public class PantallaPrincipal extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItemCrearCarrera;
     private javax.swing.JMenuItem jMenuItemCrearCorredor;
+    private javax.swing.JMenuItem jMenuItemEditarCarrera;
     private javax.swing.JMenuItem jMenuItemListaCorredores;
     private javax.swing.JMenuItem jMenuItemModificarCorredor;
     // End of variables declaration//GEN-END:variables

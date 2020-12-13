@@ -5,6 +5,7 @@
  */
 package gestioncorredores.dto;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -20,6 +21,7 @@ public class Carrera {
     //ArrayList donde se guardan los tiempos de cada corredor en al carrera
     ArrayList<Tiempo> tiempoCorredores = new ArrayList<>();
     boolean carreraAcabada;
+    SimpleDateFormat formatoFecha = new SimpleDateFormat("dd-MM-yyyy");
 
     public Carrera(String nombre, String lugar, Date fechaCarrera, int numeroParticipantes, boolean carreraAcabada) {
         this.nombre = nombre;
@@ -81,6 +83,18 @@ public class Carrera {
 
     public ArrayList<Tiempo> getTiempoCorredores() {
         return tiempoCorredores;
+    }
+
+    public String[] arrayDatosCarrera() {
+
+        String[] datos = new String[4];
+        datos[0] = nombre;
+        datos[1] = lugar;
+        datos[2] = formatoFecha.format(fechaCarrera);
+        datos[3] = Integer.toString(numeroParticipantes);
+
+        return datos;
+
     }
 
 }

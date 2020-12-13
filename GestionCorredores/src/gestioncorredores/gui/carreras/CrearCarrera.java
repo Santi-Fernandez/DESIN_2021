@@ -9,6 +9,7 @@ import gestioncorredores.dto.Carrera;
 import gestioncorredores.dto.Corredor;
 import gestioncorredores.dto.Tiempo;
 import gestioncorredores.gui.PantallaPrincipal;
+import gestioncorredores.logica.LogicaCarreras;
 import gestioncorredores.logica.LogicaCorredor;
 import gestioncorredores.logica.LogicaTiempos;
 import java.util.Date;
@@ -282,6 +283,8 @@ public class CrearCarrera extends javax.swing.JDialog {
         carrera.setFechaCarrera(fecha);
         carrera.setCarreraAcabada(false);
         carrera.setNumeroParticipantes(carrera.getTiempoCorredores().size());
+        LogicaCarreras.anadirCarrera(carrera);
+        setVisible(false);
         
     }//GEN-LAST:event_jButtonCrearActionPerformed
 
@@ -292,8 +295,7 @@ public class CrearCarrera extends javax.swing.JDialog {
         Tiempo tiempo = new Tiempo(dni, dorsal);
         LogicaTiempos.anadirTiempos(tiempo);
         carrera.anadirTiempo(tiempo);
-        añadirDatosTabla(tiempo);
-        
+        añadirDatosTabla(tiempo);        
 
     }//GEN-LAST:event_jButtonAñadirActionPerformed
 
